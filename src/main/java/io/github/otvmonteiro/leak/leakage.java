@@ -9,9 +9,7 @@ public class leakage extends JavaPlugin{
 	@Override
 	public void onEnable(){
 		getCommand("leak").setExecutor(new leakCommand());
-		//int value = 10;
-		//getCommand("upperbound"+value).setExecutor(leakCommand.setUpperbound(value));
-		
+		getCommand("upperbound").setExecutor(new upperboundCommand()); 
 		
 	}
 	

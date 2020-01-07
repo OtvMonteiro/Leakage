@@ -1,6 +1,6 @@
 name: Leakage
 main: io.github.otvmonteiro.leak.leakage
-version: 0.1
+version: 0.0.2
 description: Places a random mob spawner near the player
 commands:
   leak:
