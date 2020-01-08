@@ -70,11 +70,13 @@ public class leakCommand implements CommandExecutor {
 	
 	private void createSpawner (Location loc) {
 			
-			Block block = loc.getBlock();
-			block.setType(Material.MOB_SPAWNER);
-
+			Block block = loc.getBlock(); //Aquiring object block of the chosen location
+			block.setType(Material.MOB_SPAWNER);//setting the block at the desired position to MobSpawner
+			EntityType chosenEntity = getRandomEntity();//Method to get random entity from list to spawn
+			
+			// Creating and setting a functional spawner
 			CreatureSpawner spawner = (CreatureSpawner) block.getState();
-			spawner.setSpawnedType(EntityType.SNOWMAN);
+			spawner.setSpawnedType(chosenEntity);
 			spawner.setMinSpawnDelay(1);
 			spawner.setMaxSpawnDelay(40);
 			spawner.setDelay(-1);
@@ -85,6 +87,19 @@ public class leakCommand implements CommandExecutor {
 			
 			//spawner.setCreatureTypeByName("Cow");
 			
+	}
+	private EntityType getRandomEntity() {
+		//Creates list with desired entities
+		EntityType[] entities= {
+				EntityType.SNOWMAN, EntityType.BAT, EntityType.IRON_GOLEM,
+				EntityType.ENDERMAN, EntityType.SLIME, EntityType.SPIDER
+		};
+		
+		
+		//Randomizes one from the list and send back
+		Random r = new Random(); 
+		int random = r.nextInt(entities.length);
+		return entities[random];
 	}
 	
 }
