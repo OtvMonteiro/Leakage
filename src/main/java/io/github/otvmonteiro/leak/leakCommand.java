@@ -43,7 +43,6 @@ public class leakCommand implements CommandExecutor {
 		
 		//Creates the SpawningBlock in the desired position
 		createSpawner(loc);
-		//workingCreateSpawner(loc);
 		
 		//Broadcast it's appearance
 		Bukkit.broadcastMessage(ChatColor.RED+"Leakage appeard!!!");
@@ -66,7 +65,7 @@ public class leakCommand implements CommandExecutor {
 		double x = loc.getX();
         double y = loc.getY();
         double z = loc.getZ();
-        loc.getWorld().createExplosion(x, y, z, 6, true, true);//Explode place, tnt power, setFire and BreakBlocks
+        loc.getWorld().createExplosion(x, y, z, 4, true, true);//Explode place, tnt power, setFire and BreakBlocks
 	}
 	
 	private void createSpawner (Location loc) {
@@ -75,21 +74,19 @@ public class leakCommand implements CommandExecutor {
 			block.setType(Material.MOB_SPAWNER);
 
 			CreatureSpawner spawner = (CreatureSpawner) block.getState();
-			spawner.setSpawnedType(EntityType.BAT);
-			spawner.setDelay(1);Bukkit.broadcastMessage(Integer.toString(spawner.getDelay()));
-			spawner.setRequiredPlayerRange(getUpperbound()*4);
-			spawner.setMaxNearbyEntities(50);
+			spawner.setSpawnedType(EntityType.SNOWMAN);
+			spawner.setMinSpawnDelay(1);
+			spawner.setMaxSpawnDelay(40);
+			spawner.setDelay(-1);
+			spawner.setRequiredPlayerRange(getUpperbound()*4);//
+			spawner.setMaxNearbyEntities(100);
 			spawner.setSpawnRange(getUpperbound()*2);
-			spawner.update();			
+			spawner.update();
 			
 			//spawner.setCreatureTypeByName("Cow");
 			
 	}
 	
-	private void workingCreateSpawner (Location loc) {//Deprecated
-			Block block = loc.getBlock();//These two lines works, but spawn only a pigSpawner,
-			block.setTypeId(52);		 //that is uncastable to CreatureSpawner	
-	}
 }
 
 
