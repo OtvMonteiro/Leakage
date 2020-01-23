@@ -4,9 +4,9 @@ version: 0.0.4
 description: Places a random mob spawner near the player
 commands:
   leak:
-    Description: Creates a "monster leak" near the player
-    Usage: Type /leak or /le to use
-    Aliases: [le] 
+    description: Creates a "monster leak" near the player
+    usage: Type /leak or /le to use
+    aliases: [le] 
   upperbound:
-    Description: changes the upperbound to place random "monster leak" near player, standard is 10
-    Usage: Type /upperbound [number] , where [number] is the new value for maximum leakage distance (X and Y)
+    description: changes the upperbound to place random "monster leak" near player, standard is 10
+    usage: Type /upperbound [number] , where [number] is the new value for maximum leakage distance (X and Z)

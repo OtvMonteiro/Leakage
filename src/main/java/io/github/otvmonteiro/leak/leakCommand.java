@@ -5,8 +5,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.World;
 import org.bukkit.block.Block;
-import org.bukkit.block.BlockState;
 import org.bukkit.block.CreatureSpawner;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -46,9 +46,13 @@ public class leakCommand implements CommandExecutor {
 		
 		//Broadcast it's appearance
 		Bukkit.broadcastMessage(ChatColor.RED+"Leakage appeard!!!");
-	
+		
+		//Changes time, weather and light level (when needed)
+		setAmbience(loc);
+		
 		return true;
 	}
+	
 	
 	//Creates a random location, based on player's location
 	private Location getRandomLocation(Location p) {
@@ -71,7 +75,7 @@ public class leakCommand implements CommandExecutor {
 	private void createSpawner (Location loc) {
 			
 			Block block = loc.getBlock(); //Aquiring object block of the chosen location
-			block.setType(Material.MOB_SPAWNER);//setting the block at the desired position to MobSpawner
+			block.setType(Material.MOB_SPAWNER, false);//setting the block at the desired position to MobSpawner
 			EntityType chosenEntity = getRandomEntity();//Method to get random entity from list to spawn
 			
 			// Creating and setting a functional spawner
@@ -88,11 +92,17 @@ public class leakCommand implements CommandExecutor {
 			//spawner.setCreatureTypeByName("Cow");
 			
 	}
+	
 	private EntityType getRandomEntity() {
 		//Creates list with desired entities
 		EntityType[] entities= {
 				EntityType.SNOWMAN, EntityType.BAT, EntityType.IRON_GOLEM,
-				EntityType.ENDERMAN, EntityType.SLIME, EntityType.SPIDER
+				EntityType.ENDERMAN, EntityType.SLIME, EntityType.SPIDER,
+				EntityType.WITCH, EntityType.FIREWORK, EntityType.CAVE_SPIDER,
+				EntityType.BLAZE, EntityType.SKELETON, EntityType.ZOMBIE,
+				EntityType.CREEPER, EntityType.LIGHTNING, EntityType.WOLF,
+				EntityType.SILVERFISH, EntityType.POLAR_BEAR, EntityType.PARROT,
+				EntityType.VINDICATOR, EntityType.ZOMBIE_VILLAGER, EntityType.GIANT
 		};
 		
 		
@@ -100,6 +110,44 @@ public class leakCommand implements CommandExecutor {
 		Random r = new Random(); 
 		int random = r.nextInt(entities.length);
 		return entities[random];
+	}
+	
+	private void setAmbience(Location loc) {
+		World w = loc.getWorld();
+		
+		//Time and weather
+		w.setTime(22000);//10 at night
+		w.setStorm(true);//Creates storm
+		w.setThundering(true);//Thunderstorm
+		
+		//Closing the Spawner
+		createEnclosure(loc);
+	}
+	
+	private void createEnclosure(Location loc) {
+		
+		int x = loc.getBlockX(), y = loc.getBlockY(), z = loc.getBlockZ();
+		World w = loc.getWorld();
+		
+		//Get location for blocks connected to spawner
+		Location loc1 = new Location(w,x+1,y  ,z  );
+		Location loc2 = new Location(w,x-1,y  ,z  );
+		Location loc3 = new Location(w,x  ,y+1,z  );
+		Location loc4 = new Location(w,x  ,y-1,z  );
+		Location loc5 = new Location(w,x  ,y  ,z+1);
+		Location loc6 = new Location(w,x  ,y  ,z-1);
+		 
+		Location locFire = new Location(w,x,y+2,z);
+		
+		// Set those blocks to assigned material
+		(loc1.getBlock()).setType(Material.NETHERRACK);
+		(loc2.getBlock()).setType(Material.NETHERRACK);
+		(loc3.getBlock()).setType(Material.NETHERRACK);
+		(loc4.getBlock()).setType(Material.NETHERRACK);
+		(loc5.getBlock()).setType(Material.NETHERRACK);
+		(loc6.getBlock()).setType(Material.NETHERRACK);	
+		
+		(locFire.getBlock()).setType(Material.FIRE);	
 	}
 	
 }
