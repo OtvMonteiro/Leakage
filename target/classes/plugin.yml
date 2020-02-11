@@ -10,3 +10,6 @@ commands:
   upperbound:
     description: changes the upperbound to place random "monster leak" near player, standard is 10
     usage: Type /upperbound [number] , where [number] is the new value for maximum leakage distance (X and Z)
+  leakProbability:
+    description: Changes the probability of natural occuring leakages
+    usage: Type /leakProbability [number] . Probability is set as 1 in [number]

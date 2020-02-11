@@ -9,7 +9,7 @@ public class upperboundCommand implements CommandExecutor{
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-		// TODO Auto-generated method stub
+
 		leakCommand.setUpperbound(Integer.parseInt(args[0]));
 		Bukkit.broadcastMessage("Upperbound set to : "+args[0]);
 		
