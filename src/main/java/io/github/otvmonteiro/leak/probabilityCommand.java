@@ -1,8 +1,10 @@
 package io.github.otvmonteiro.leak;
 
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
 public class probabilityCommand implements CommandExecutor{
 
@@ -13,6 +15,8 @@ public class probabilityCommand implements CommandExecutor{
 		
 		probabilityCommand.setProbability(Integer.parseInt(args[0]));
 		
+		if (!(sender instanceof Player)) {Bukkit.broadcastMessage("Probability set to 1 in "+args[0]);	}
+		else {Player player = (Player) sender;		player.chat("Probability set to 1 in "+args[0]);}
 		return true;
 	}
 	public static CommandExecutor setProbability(int newp) {

@@ -90,7 +90,7 @@ public class createLeak {
 				EntityType.ENDERMAN, EntityType.SLIME, EntityType.SPIDER,
 				EntityType.WITCH, EntityType.FIREWORK, EntityType.CAVE_SPIDER,
 				EntityType.BLAZE, EntityType.SKELETON, EntityType.ZOMBIE,
-				EntityType.CREEPER, EntityType.LIGHTNING, EntityType.WOLF,
+				EntityType.CREEPER, EntityType.WOLF,   EntityType.ZOMBIE,
 				EntityType.SILVERFISH, EntityType.POLAR_BEAR, EntityType.PARROT,
 				EntityType.VINDICATOR, EntityType.ZOMBIE_VILLAGER, EntityType.GIANT
 		};

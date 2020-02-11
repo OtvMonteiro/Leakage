@@ -1,15 +1,22 @@
 name: Leakage
+version: 0.0.6
+description: Places a random mob spawner near the player, setting ambience and customizable options
 main: io.github.otvmonteiro.leak.leakage
-version: 0.0.4
-description: Places a random mob spawner near the player
+author: OtvMonteiro
+website: https://github.com/OtvMonteiro/Leakage
+
 commands:
   leak:
     description: Creates a "monster leak" near the player
-    usage: Type /leak or /le to use
-    aliases: [le] 
+    usage: Type /leak to use
   upperbound:
-    description: changes the upperbound to place random "monster leak" near player, standard is 10
+    description: Changes the upperbound to place random "monster leak" near player, standard is 10
     usage: Type /upperbound [number] , where [number] is the new value for maximum leakage distance (X and Z)
   leakProbability:
     description: Changes the probability of natural occuring leakages
-    usage: Type /leakProbability [number] . Probability is set as 1 in [number]
+    usage: Type /leakProbability [number]  Probability is set as 1 in [number]
+  schedulerTime:
+    description: Set time till script that checks if a random leak occurs, standard is 300 seconds, causing near 1 leak per hour
+    usage: Type /schedulerTime [number] to change time till next check
+    default: op
+    

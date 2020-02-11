@@ -15,10 +15,11 @@ public class randomLeak {
 	}
 	
 	public static Player getRandomPlayer() {
+		Bukkit.broadcastMessage("Assigning random player");
 		Random r = new Random();
-		Player[] onlinePlayers =  (Player[]) Bukkit.getOnlinePlayers().toArray();
-		int n = r.nextInt(onlinePlayers.length);
-		return onlinePlayers[n];
+		int n = r.nextInt(Bukkit.getOnlinePlayers().size());
+		Player player =  (Player) ((Bukkit.getOnlinePlayers().toArray())[n]);
+		return player;
 	}
 	
 	
