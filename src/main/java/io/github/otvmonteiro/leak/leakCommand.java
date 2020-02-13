@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
 public class leakCommand implements CommandExecutor {
 	
 	private static int upperbound=10;
-	public int getUpperbound () {return upperbound;}
+	public static int getUpperbound () {return upperbound;}
 	public static CommandExecutor setUpperbound (int upperbound) {
 		leakCommand.upperbound=upperbound;
 		return null;

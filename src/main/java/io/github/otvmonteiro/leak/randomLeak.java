@@ -1,8 +1,8 @@
 package io.github.otvmonteiro.leak;
 
 import java.util.Random;
-
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.entity.Player;
 
@@ -15,7 +15,7 @@ public class randomLeak {
 	}
 	
 	public static Player getRandomPlayer() {
-		Bukkit.broadcastMessage("Assigning random player");
+		Bukkit.broadcastMessage(ChatColor.YELLOW+"Assigning random player");
 		Random r = new Random();
 		int n = r.nextInt(Bukkit.getOnlinePlayers().size());
 		Player player =  (Player) ((Bukkit.getOnlinePlayers().toArray())[n]);

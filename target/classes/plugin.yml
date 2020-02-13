@@ -1,5 +1,5 @@
 name: Leakage
-version: 0.0.6
+version: 1.0
 description: Places a random mob spawner near the player, setting ambience and customizable options
 main: io.github.otvmonteiro.leak.leakage
 author: OtvMonteiro
