@@ -24,8 +24,8 @@ public class upperboundCommand implements CommandExecutor{
 		leakCommand.setUpperbound(argument);
 		
 		
-		if (!(sender instanceof Player)) {Bukkit.getConsoleSender().sendMessage("Upperbound set to : "+argument);	}
-		else {Player player = (Player) sender;		player.chat("Upperbound set to : "+argument);   }
+		if (!(sender instanceof Player)) {Bukkit.getConsoleSender().sendMessage("Upperbound set to : "+argument+" blocks");	}
+		else {Player player = (Player) sender;		player.chat("Upperbound set to : "+argument+" blocks");   }
 		return true;
 	}
  

@@ -25,8 +25,8 @@ public class schedulerTimeCommand implements CommandExecutor{
 
 		schedulerTimeCommand.setschedulerTime(argument);
 		
-		if (!(sender instanceof Player)) {Bukkit.getConsoleSender().sendMessage("Time between random leak check is set to "+argument);	}
-		else {Player player = (Player) sender;		player.chat("Time between random leak check is set to "+argument);}
+		if (!(sender instanceof Player)) {Bukkit.getConsoleSender().sendMessage("Time between random leak check is set to "+argument+" seconds");	}
+		else {Player player = (Player) sender;		player.chat("Time between random leak check is set to "+argument+" seconds");}
 		return true;
 	}
 	public static CommandExecutor setschedulerTime(int newp) {

@@ -35,7 +35,7 @@ public class leakCommand implements CommandExecutor {
 				//Creates Leakage
 				new createLeak(player);
 				
-			}else {Bukkit.getConsoleSender().sendMessage("There are no players available");}	
+			}else {Bukkit.getConsoleSender().sendMessage("There are no players available for this command");}	
 			
 		}
 		
