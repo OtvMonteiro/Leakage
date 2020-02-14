@@ -14,7 +14,7 @@ public class upperboundCommand implements CommandExecutor{
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
 		// Resolving argument
-		if(!args[0].isEmpty()) {//In case something is written it sets the new value
+		if(args.length!=0) {//In case something is written it sets the new value
 			argument=Integer.parseInt(args[0]);
 		}
 		else {                  //Otherwise the original is reset (to notify sender)
@@ -24,8 +24,8 @@ public class upperboundCommand implements CommandExecutor{
 		leakCommand.setUpperbound(argument);
 		
 		
-		if (!(sender instanceof Player)) {Bukkit.getConsoleSender().sendMessage("Upperbound set to : "+args[0]);	}
-		else {Player player = (Player) sender;		player.chat("Upperbound set to : "+args[0]);   }
+		if (!(sender instanceof Player)) {Bukkit.getConsoleSender().sendMessage("Upperbound set to : "+argument);	}
+		else {Player player = (Player) sender;		player.chat("Upperbound set to : "+argument);   }
 		return true;
 	}
  

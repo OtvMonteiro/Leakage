@@ -8,15 +8,15 @@ import org.bukkit.entity.Player;
 
 public class probabilityCommand implements CommandExecutor{
 
-	private static int probability = 10; //starting at 1 in 10 chance of leak, every scheduler run
-	private int argument;
+	private static int probability = 60; //starting at 1 in 60 chance of leak, every scheduler run
+	private int argument=probability;
 	
 	public static int getProbability() {return probability;}
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 		// Resolving argument
-		if(!args[0].isEmpty()) {//In case something is written it sets the new value
-			argument=Integer.parseInt(args[0]);
+		if(args.length!=0){
+		argument=Integer.parseInt(args[0]);
 		}
 		else {                  //Otherwise the original is reset (to notify sender)
 			argument = getProbability();
@@ -25,8 +25,8 @@ public class probabilityCommand implements CommandExecutor{
 		probabilityCommand.setProbability(argument);
 		
 		//Chooses between server and player to notify
-		if (!(sender instanceof Player)) {Bukkit.getConsoleSender().sendMessage("Probability set to 1 in "+args[0]);}
-		else {Player player = (Player) sender;		player.chat("Probability set to 1 in "+args[0]);}
+		if (!(sender instanceof Player)) {Bukkit.getConsoleSender().sendMessage("Probability set to 1 in "+argument);}
+		else {Player player = (Player) sender;		player.chat("Probability set to 1 in "+argument);}
 		return true;
 	}
 	public static CommandExecutor setProbability(int newp) {
